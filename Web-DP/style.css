@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-weight: 600;
+}
+
+body {
+    background: url("assets/bg2.jpg");
+    width: 100%;
+    height: 100dvh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    background: rgb(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Utilities */
+.regular-txt{
+    font-weight: 400;
+}
+/* End Utilities */
+
+.container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container, .soil-moisture-container, .rfid-container{
+    width: 300px;
+    height: 496px;
+    z-index: 1;
+    background: linear-gradient(
+        to top, rgb(0, 0, 0, 0.15),
+        rgb(255, 255, 255, 0.15));
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+}
+
+/* Input Container */
+.input-container{
+    position: relative;
+    margin-bottom: 25px;
+}
+.city-input{
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background: rgba(0, 0 , 0, 0.15);
+    outline: none;
+    font-weight: 500;
+    transition: 0.25s border;
+    padding-right: 45px;
+}
+.city-input:focus{
+    border: 3px solid rgb(0, 0, 0, 0.15);
+}
+.city-input::placeholder{
+    color: rgb(255,255, 255, 0.75);
+}
+
+.search-btn{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    display: flex;
+    border: none;
+    cursor: pointer;
+}
+/* End Input Container */
+
+/* Weather Info */
+.weather-info{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.location-date-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.weather-summary-container{
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+}
+.weather-summary-img{
+    width: 120px;
+    height: 120px;
+}
+.weather-summary-info{
+    text-align: end;
+}
+
+.weather-conditions-container{
+    display: flex;
+    justify-content: space-between;
+}
+.condition-item{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.condition-item span{
+    font-size: 30px;
+}
+
+.forecast-item-container{
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    padding-bottom: 12px;
+}
+.forecast-item-container::-webkit-scrollbar{
+    height: 8px;
+}
+.forecast-item-container::-webkit-scrollbar-track{
+    background: rgb(0, 0, 0, 0.1);
+    border-radius: 99px;
+}
+.forecast-item-container::-webkit-scrollbar-thumb{
+    background-color: rgb(0, 0 , 0, 0.15);
+    border-radius: 99px;
+}
+
+.forecast-item{
+    min-width: 70px;
+    background: rgb(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 12px;
+    transition: 0.3s background;
+}
+.forecast-item:hover{
+    background: rgb(255, 255, 255, 0.15);
+}
+.forecast-item-img{
+    width: 35px;
+    height: 35px;
+}
+/* End Weather Info */
+
+/* Soil Moisture Info */
+.soil-moisture-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.soil-moisture-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.soil-date-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.soil-condition-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.soil-condition-img {
+    width: 120px;
+    height: 120px;
+    border: none;
+}
+.soil-condition-info {
+    text-align: end;
+}
+
+.soil-summary-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.soil-moisture-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.pump-btn {
+    position: absolute;
+    bottom: 30px;
+    transform: translateX(-50%);
+    left: 50%;
+    width: calc(100% - 40px); /* Adjusted width */
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out;
+}
+.pump-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* End Soil Moisture Info */
+
+/* RFID Info */
+.rfid-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.rfid-summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rfid-img {
+    width: 120px;
+    height: 120px;
+}
+
+.rfid-info{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.rfid-condition-info {
+    text-align: end;
+}
+.rfid-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rfid-status {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.database-btn {
+    position: absolute;
+    bottom: 30px;
+    transform: translateX(-50%);
+    left: 50%;
+    width: calc(100% - 20px);
+    height: 50px; /* Adjust height as needed */
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out;
+}
+.database-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* End RFID Info */
+
+/* Message Section */
+.section-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-top: 25%;
+}
+.section-message img{
+    height: 180px;
+    width: fit-content;
+}
+/* End Message Section */

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .chart {
+            height: 300px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
+</body>
+</html>
