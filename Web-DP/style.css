@@ -15,9 +15,6 @@ body {
     height: 100dvh;
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 body::before{
     content: "";
@@ -37,20 +34,14 @@ body::before{
 .container {
     display: flex;
     gap: 40px;
-    justify-content: center;
-    align-items: center;
+    padding: 40px;
+    padding-bottom: 0px;
 }
 
-.weather-container, .soil-moisture-container, .rfid-container{
-    width: 300px;
+.weather-container{
+    width: 700px;
     height: 496px;
     z-index: 1;
-    background: linear-gradient(
-        to top, rgb(0, 0, 0, 0.15),
-        rgb(255, 255, 255, 0.15));
-    border-radius: 12px;
-    backdrop-filter: blur(100px);
-    padding: 20px;
 }
 
 /* Input Container */
@@ -171,14 +162,77 @@ body::before{
 }
 /* End Weather Info */
 
-/* Soil Moisture Info */
-.soil-moisture-container {
+/* RFID Info */
+.rfid-container, .soil-moisture-container{
+    width: 300px;
+    height: 496px;
+    z-index: 1;
+    background: linear-gradient(
+        to top, rgb(0, 0, 0, 0.15),
+        rgb(255, 255, 255, 0.15));
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
 }
 
+.rfid-summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rfid-img {
+    width: 120px;
+    height: 120px;
+}
+
+.rfid-info{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.rfid-condition-info {
+    text-align: end;
+}
+.rfid-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rfid-status {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.database-btn {
+    position: absolute;
+    bottom: 30px;
+    transform: translateX(-50%);
+    left: 50%;
+    width: calc(100% - 20px);
+    height: 50px; /* Adjust height as needed */
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out;
+}
+.database-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* End RFID Info */
+
+/* Soil Moisture Info */
 .soil-moisture-info {
     display: flex;
     flex-direction: column;
@@ -238,68 +292,6 @@ body::before{
 }
 
 /* End Soil Moisture Info */
-
-/* RFID Info */
-.rfid-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 50px;
-}
-
-.rfid-summary-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.rfid-img {
-    width: 120px;
-    height: 120px;
-}
-
-.rfid-info{
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-.rfid-condition-info {
-    text-align: end;
-}
-.rfid-details-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.rfid-status {
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.database-btn {
-    position: absolute;
-    bottom: 30px;
-    transform: translateX(-50%);
-    left: 50%;
-    width: calc(100% - 20px);
-    height: 50px; /* Adjust height as needed */
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease-in-out;
-}
-.database-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* End RFID Info */
 
 /* Message Section */
 .section-message{
