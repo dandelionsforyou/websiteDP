@@ -31,11 +31,23 @@ body::before{
 }
 /* End Utilities */
 
-.container {
+.container{
     display: flex;
     gap: 40px;
     padding: 40px;
-    padding-bottom: 0px;
+}
+
+.moisture-pump-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    padding-top: 0px;
+}
+
+.moisture2-container, .pump2-container{
+    display: flex;
+    gap: 40px;
 }
 
 .weather-container{
@@ -233,6 +245,23 @@ body::before{
 /* End RFID Info */
 
 /* Soil Moisture Info */
+
+.soil-moisture-container{
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    background: linear-gradient(
+        to top, rgb(0, 0, 0, 0.15),
+        rgb(255, 255, 255, 0.15));
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .soil-moisture-info {
     display: flex;
     flex-direction: column;
@@ -268,30 +297,27 @@ body::before{
     font-size: 28px;
     font-weight: 700;
 }
-
-.pump-btn {
-    position: absolute;
-    bottom: 30px;
-    transform: translateX(-50%);
-    left: 50%;
-    width: calc(100% - 40px); /* Adjusted width */
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease-in-out;
-}
-.pump-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
 /* End Soil Moisture Info */
+
+/* Water Pump Info*/
+
+/* End Water Pump Info */
+
+.pump-container{
+    width: 300px;
+    height: 80px;
+    z-index: 1;
+    background: linear-gradient(
+        to top, rgb(0, 0, 0, 0.15),
+        rgb(255, 255, 255, 0.15));
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 /* Message Section */
 .section-message{
