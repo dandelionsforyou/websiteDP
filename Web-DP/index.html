@@ -12,305 +12,307 @@
 <body>
     
 <main class="container">
+    <main class="header-container">
+        <main class="weather-container">
 
-    <main class="weather-container">
-
-        <header class="input-container">
-            <input class="city-input" placeholder="Search City" type="text" >
-            <button class="search-btn">
-                <span class="material-symbols-outlined">
-                    search
-                </span>
-            </button>
-        </header>
-
-        <section class="weather-info" style="display: none;">
-            <div class="location-date-container">
-                <div class="location">
+            <header class="input-container">
+                <input class="city-input" placeholder="Search City" type="text" >
+                <button class="search-btn">
                     <span class="material-symbols-outlined">
-                        location_on
+                        search
                     </span>
-                    <h4 class="country-text">Malang</h4>
-                </div>
-                <h5 class="current-date-txt regular-txt">Monday, 17 Mar</h5>
-            </div>
+                </button>
+            </header>
 
-            <div class="weather-summary-container">
-                <img src="assets/weather/clouds.svg" class="weather-summary-img">
-                <div class="weather-summary-info">
-                    <h1 class="temp-text">29 °C</h1>
-                    <h3 class="condition-text regular-txt">Clouds</h3>
+            <section class="weather-info" style="display: none;">
+                <div class="location-date-container">
+                    <div class="location">
+                        <span class="material-symbols-outlined">
+                            location_on
+                        </span>
+                        <h4 class="country-text">Malang</h4>
+                    </div>
+                    <h5 class="current-date-txt regular-txt">Monday, 17 Mar</h5>
                 </div>
-            </div>
 
-            <div class="weather-conditions-container">
-                <div class="condition-info">
-                    <span class="material-symbols-outlined">
-                        water_drop
-                    </span>
-                    <div class="condition-item">
-                        <h5 class="regular-txt">Humidity</h5>
-                        <h5 class="humidity-value-txt">55%</h5>
+                <div class="weather-summary-container">
+                    <img src="assets/weather/clouds.svg" class="weather-summary-img">
+                    <div class="weather-summary-info">
+                        <h1 class="temp-text">29 °C</h1>
+                        <h3 class="condition-text regular-txt">Clouds</h3>
                     </div>
                 </div>
 
-                <div class="condition-item">
-                    <span class="material-symbols-outlined">
-                        air
-                    </span>
+                <div class="weather-conditions-container">
                     <div class="condition-info">
-                        <h5 class="regular-txt">Wind Speed</h5>
-                        <h5 class="wind-value-txt">2 M/s</h5>
+                        <span class="material-symbols-outlined">
+                            water_drop
+                        </span>
+                        <div class="condition-item">
+                            <h5 class="regular-txt">Humidity</h5>
+                            <h5 class="humidity-value-txt">55%</h5>
+                        </div>
+                    </div>
+
+                    <div class="condition-item">
+                        <span class="material-symbols-outlined">
+                            air
+                        </span>
+                        <div class="condition-info">
+                            <h5 class="regular-txt">Wind Speed</h5>
+                            <h5 class="wind-value-txt">2 M/s</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="forecast-item-container">
-                <div class="forecast-item">
-                    <h5 class="forecast-item-date regular-txt">15 Mar</h5>
-                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
-                    <h5 class="forecast-item-temp">29 °C</h5>
+                <div class="forecast-item-container">
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">15 Mar</h5>
+                        <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                        <h5 class="forecast-item-temp">29 °C</h5>
+                    </div>
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">15 Mar</h5>
+                        <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                        <h5 class="forecast-item-temp">29 °C</h5>
+                    </div>
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">15 Mar</h5>
+                        <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                        <h5 class="forecast-item-temp">29 °C</h5>
+                    </div>
+                    <div class="forecast-item">
+                        <h5 class="forecast-item-date regular-txt">15 Mar</h5>
+                        <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
+                        <h5 class="forecast-item-temp">29 °C</h5>
+                    </div>
                 </div>
-                <div class="forecast-item">
-                    <h5 class="forecast-item-date regular-txt">15 Mar</h5>
-                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
-                    <h5 class="forecast-item-temp">29 °C</h5>
+            </section>
+            
+            <section class="search-city section-message">
+                <img src="assets/message/search-city.png">
+                <div>
+                    <h1>Search City</h1>
+                    <h4 class="regular-txt">
+                        Find out weather conditions of the city
+                    </h4>
                 </div>
-                <div class="forecast-item">
-                    <h5 class="forecast-item-date regular-txt">15 Mar</h5>
-                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
-                    <h5 class="forecast-item-temp">29 °C</h5>
+            </section>
+
+            <section class="not-found section-message" style="display: none;">
+                <img src="assets/message/not-found.png">
+                <div>
+                    <h1>404 Not Found</h1>
+                    <h4 class="regular-txt">
+                        Try searching another city
+                    </h4>
                 </div>
-                <div class="forecast-item">
-                    <h5 class="forecast-item-date regular-txt">15 Mar</h5>
-                    <img src="assets/weather/thunderstorm.svg" class="forecast-item-img">
-                    <h5 class="forecast-item-temp">29 °C</h5>
+            </section>
+
+        </main>
+
+        <!-- New Section for RFID -->
+        <main class="rfid-container">
+            <section class="rfid-info">
+                <div class="condition-item">
+                    <h5 class="rfid-login-txt regular-txt">Login at: </h5>
+                    <h5 class="rfid-date-txt">Monday, 17 Mar</h5>
                 </div>
-            </div>
-        </section>
         
-        <section class="search-city section-message">
-            <img src="assets/message/search-city.png">
-            <div>
-                <h1>Search City</h1>
-                <h4 class="regular-txt">
-                    Find out weather conditions of the city
-                </h4>
-            </div>
-        </section>
-
-        <section class="not-found section-message" style="display: none;">
-            <img src="assets/message/not-found.png">
-            <div>
-                <h1>404 Not Found</h1>
-                <h4 class="regular-txt">
-                    Try searching another city
-                </h4>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- New Section for RFID -->
-    <main class="rfid-container">
-        <section class="rfid-info">
-            <div class="condition-item">
-                <h5 class="rfid-login-txt regular-txt">Login at: </h5>
-                <h5 class="rfid-date-txt">Monday, 17 Mar</h5>
-            </div>
-    
-            <div class="rfid-summary-container">
-                <div class="condition-item">
-                    <img src="assets/rfid/person.svg" class="rfid-img">
-                </div>
-                <div class="rfid-condition-info">
-                    <h1 class="rfid-status">Not Detected</h1>
-                    <h3 class="condition-text regular-txt">RFID Status</h3>
-                </div>
-            </div>
-    
-            <div class="rfid-details-container">
-                <div class="condition-info">
-                    <span class="material-symbols-outlined">
-                        badge
-                    </span>
+                <div class="rfid-summary-container">
                     <div class="condition-item">
-                        <h5 class="regular-text">Card ID</h5>
-                        <h5 class="rfid-card-id">--</h5>
+                        <img src="assets/rfid/person.svg" class="rfid-img">
+                    </div>
+                    <div class="rfid-condition-info">
+                        <h1 class="rfid-status">Not Detected</h1>
+                        <h3 class="condition-text regular-txt">RFID Status</h3>
                     </div>
                 </div>
-                <div class="condition-info">
-                    <span class="material-symbols-outlined">
-                        person
-                    </span>
-                    <div class="condition-item">
-                        <h5 class="regular-text">Owner</h5>
-                        <h5 class="rfid-owner">Unknown</h5>
+        
+                <div class="rfid-details-container">
+                    <div class="condition-info">
+                        <span class="material-symbols-outlined">
+                            badge
+                        </span>
+                        <div class="condition-item">
+                            <h5 class="regular-text">Card ID</h5>
+                            <h5 class="rfid-card-id">--</h5>
+                        </div>
+                    </div>
+                    <div class="condition-info">
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+                        <div class="condition-item">
+                            <h5 class="regular-text">Owner</h5>
+                            <h5 class="rfid-owner">Unknown</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button class="database-btn">Database</button>
-        </section>
-    
-    </main>
-
-</main>
-
-<main class="status-container">
-    <main class="moisture-pump-container">
-        <main class="moisture2-container">
-            <!-- New Section for Soil Moisture -->
-            <main class="soil-moisture-container">
-                <section class="soil-moisture-info">
-                    <div class="location-date-container">
-                        <h5 class="soil-date-txt regular-txt">Monday, 17 Mar</h5>
-                    </div>
-                    <div class="soil-condition-container">
-                        <div class="condition-item">
-                        <img src="assets/soil/moisture.svg" class="soil-condition-img">
-                        </div>
-                        <div class="soil-condition-info">
-                            <h1 class="moisture-value">Dry</h1>
-                            <h3 class="condition-text regular-txt">Soil 1 Status</h3>
-                        </div>
-                    </div>
-
-                    <div class="soil-summary-container">
-                        <div class="condition-info">
-                            <span class="material-symbols-outlined">
-                                humidity_percentage
-                            </span>
-                        
-                            <div class="condition-item">
-                                <h5 class="regular-text">Moisture</h5>
-                                <h5 class="moisture-value-txt">0%</h5>
-                            </div>
-                        </div>
-                    
-
-                        <div class="condition-item">
-                                <span class="material-symbols-outlined">
-                                    readiness_score
-                                </span>
-                            <div class="condition-info">
-                                <h5 class="regular-txt">Analog Value</h5>
-                                <h5 class="analog-value-text">1300</h5>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <!-- New Section for Soil Moisture -->
-            <main class="soil-moisture-container">
-                <section class="soil-moisture-info">
-                    <div class="location-date-container">
-                        <h5 class="soil-date-txt regular-txt">Monday, 17 Mar</h5>
-                    </div>
-                    <div class="soil-condition-container">
-                        <div class="condition-item">
-                        <img src="assets/soil/moisture.svg" class="soil-condition-img">
-                        </div>
-                        <div class="soil-condition-info">
-                            <h1 class="moisture-value">Dry</h1>
-                            <h3 class="condition-text regular-txt">Soil 2 Status</h3>
-                        </div>
-                    </div>
-
-                    <div class="soil-summary-container">
-                        <div class="condition-info">
-                            <span class="material-symbols-outlined">
-                                humidity_percentage
-                            </span>
-                        
-                            <div class="condition-item">
-                                <h5 class="regular-text">Moisture</h5>
-                                <h5 class="moisture-value-txt">0%</h5>
-                            </div>
-                        </div>
-                    
-
-                        <div class="condition-item">
-                                <span class="material-symbols-outlined">
-                                    readiness_score
-                                </span>
-                            <div class="condition-info">
-                                <h5 class="regular-txt">Analog Value</h5>
-                                <h5 class="analog-value-text">1300</h5>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </main>
-
-        <main class="pump2-container">
-            <!-- New Section for Water Pump -->
-            <main class="pump-container">
-                <section class="soil-moisture-info">
-                    <div class="soil-condition-container">
-                        <div class="condition-item">
-                            
-                            <h3 class="condition-text regular-txt">Water Pump 1 Status</h3>
-                        </div>
-                        <div class="soil-condition-info">
-                            <h1 class="moisture-value">On</h1>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <!-- New Section for Water Pump -->
-            <main class="pump-container">
-                <section class="soil-moisture-info">
-                    <div class="soil-condition-container">
-                        <div class="condition-item">
-                            
-                            <h3 class="condition-text regular-txt">Water Pump 2 Status</h3>
-                        </div>
-                        <div class="soil-condition-info">
-                            <h1 class="moisture-value">Off</h1>
-                        </div>
-                    </div>
-                </section>
-            </main>
+                <button class="database-btn">Database</button>
+            </section>
+        
         </main>
     </main>
 
-    <!-- New Section for Fire Detection -->
-    <main class="fire-detection-container">
-        <section class="soil-moisture-info">
-            <div class="soil-condition-container">
-                <div class="condition-item">
-                <img src="assets/soil/moisture.svg" class="soil-condition-img">
+    <main class="status-container">
+        <main class="moisture-pump-container">
+            <main class="moisture2-container">
+                <!-- New Section for Soil Moisture -->
+                <main class="soil-moisture-container">
+                    <section class="soil-moisture-info">
+                        <div class="location-date-container">
+                            <h5 class="soil-date-txt regular-txt">Monday, 17 Mar</h5>
+                        </div>
+                        <div class="soil-condition-container">
+                            <div class="condition-item">
+                            <img src="assets/soil/moisture.svg" class="soil-condition-img">
+                            </div>
+                            <div class="soil-condition-info">
+                                <h1 class="moisture-value">Dry</h1>
+                                <h3 class="condition-text regular-txt">Soil 1 Status</h3>
+                            </div>
+                        </div>
+
+                        <div class="soil-summary-container">
+                            <div class="condition-info">
+                                <span class="material-symbols-outlined">
+                                    humidity_percentage
+                                </span>
+                            
+                                <div class="condition-item">
+                                    <h5 class="regular-text">Moisture</h5>
+                                    <h5 class="moisture-value-txt">0%</h5>
+                                </div>
+                            </div>
+                        
+
+                            <div class="condition-item">
+                                    <span class="material-symbols-outlined">
+                                        readiness_score
+                                    </span>
+                                <div class="condition-info">
+                                    <h5 class="regular-txt">Analog Value</h5>
+                                    <h5 class="analog-value-text">1300</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- New Section for Soil Moisture -->
+                <main class="soil-moisture-container">
+                    <section class="soil-moisture-info">
+                        <div class="location-date-container">
+                            <h5 class="soil-date-txt regular-txt">Monday, 17 Mar</h5>
+                        </div>
+                        <div class="soil-condition-container">
+                            <div class="condition-item">
+                            <img src="assets/soil/moisture.svg" class="soil-condition-img">
+                            </div>
+                            <div class="soil-condition-info">
+                                <h1 class="moisture-value">Dry</h1>
+                                <h3 class="condition-text regular-txt">Soil 2 Status</h3>
+                            </div>
+                        </div>
+
+                        <div class="soil-summary-container">
+                            <div class="condition-info">
+                                <span class="material-symbols-outlined">
+                                    humidity_percentage
+                                </span>
+                            
+                                <div class="condition-item">
+                                    <h5 class="regular-text">Moisture</h5>
+                                    <h5 class="moisture-value-txt">0%</h5>
+                                </div>
+                            </div>
+                        
+
+                            <div class="condition-item">
+                                    <span class="material-symbols-outlined">
+                                        readiness_score
+                                    </span>
+                                <div class="condition-info">
+                                    <h5 class="regular-txt">Analog Value</h5>
+                                    <h5 class="analog-value-text">1300</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </main>
+
+            <main class="pump2-container">
+                <!-- New Section for Water Pump -->
+                <main class="pump-container">
+                    <section class="soil-moisture-info">
+                        <div class="soil-condition-container">
+                            <div class="condition-item">
+                                
+                                <h3 class="condition-text regular-txt">Water Pump 1 Status</h3>
+                            </div>
+                            <div class="soil-condition-info">
+                                <h1 class="moisture-value">On</h1>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- New Section for Water Pump -->
+                <main class="pump-container">
+                    <section class="soil-moisture-info">
+                        <div class="soil-condition-container">
+                            <div class="condition-item">
+                                
+                                <h3 class="condition-text regular-txt">Water Pump 2 Status</h3>
+                            </div>
+                            <div class="soil-condition-info">
+                                <h1 class="moisture-value">Off</h1>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </main>
+        </main>
+
+        <!-- New Section for Fire Detection -->
+        <main class="fire-detection-container">
+            <section class="fire-detection-info">
+                <div class="location-date-container">
+                    <h5 class="soil-date-txt regular-txt">Monday, 17 Mar</h5>
                 </div>
-                <div class="soil-condition-info">
-                    <h1 class="moisture-value">Normal</h1>
-                    <h3 class="condition-text regular-txt">Air Condition</h3>
+                <div class="soil-condition-container">
+                    <div class="condition-item">
+                    <img src="assets/fire/fire.svg" class="soil-condition-img">
+                    </div>
+                    <div class="soil-condition-info">
+                        <h1 class="moisture-value">Normal</h1>
+                        <h3 class="condition-text regular-txt">Fire Detection</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="soil-condition-container">
-                <div class="condition-item">
-                <img src="assets/soil/moisture.svg" class="soil-condition-img">
+                <div class="soil-condition-container">
+                    <div class="condition-item">
+                    <img src="assets/air/air.svg" class="soil-condition-img">
+                    </div>
+                    <div class="soil-condition-info">
+                        <h1 class="moisture-value">Normal</h1>
+                        <h3 class="condition-text regular-txt">Air Condition</h3>
+                        <div class="air-analog-item">
+                            <span class="material-symbols-outlined">
+                                readiness_score
+                            </span>
+                            <h5 class="analog-value-txt">1300</h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="soil-condition-info">
-                    <h1 class="moisture-value">Normal</h1>
-                    <h3 class="condition-text regular-txt">Fire Detection</h3>
+                <div class="fire-condition-item">
+                    <h5 class="regular-text">Air is fresh and safe</h5>
+                    <img src="assets/emot/smile.svg" class="emote-img">
                 </div>
-            </div>
-            <div class="condition-item">
-                <span class="material-symbols-outlined">
-                    readiness_score
-                </span>
-                <div class="condition-info">
-                    <h5 class="regular-txt">Analog Value</h5>
-                    <h5 class="analog-value-text">1300</h5>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
     </main>
-</main>
-    
 </main>
 </body>
 </html>
