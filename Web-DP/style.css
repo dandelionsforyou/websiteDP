@@ -42,18 +42,16 @@ body::before{
 .header-container{
     display: flex;
     gap: 40px;
-    padding: 40px;
 }
 .status-container{
     display: flex;
+    gap: 40px;
 }
 
 .moisture-pump-container{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 40px;
-    padding-top: 0px;
 }
 
 .moisture2-container, .pump2-container{
