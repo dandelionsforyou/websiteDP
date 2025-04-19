@@ -365,6 +365,27 @@ body::before{
 }
 /* End Fire Detection Info */
 
+/* Water Level Info */
+.water-level-container{
+    width: 300px;
+    height: 400px;
+    z-index: 1;
+    background: linear-gradient(
+        to top, rgb(0, 0, 0, 0.15),
+        rgb(255, 255, 255, 0.15));
+    border-radius: 12px;
+    backdrop-filter: blur(100px);
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.water-analog-value{
+    display: flex;
+}
+/* End of Water Level Info */
+
 /* Message Section */
 .section-message{
     display: flex;
