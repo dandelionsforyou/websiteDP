@@ -197,6 +197,8 @@ body::before{
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 80px;
 }
 
 .rfid-summary-container {
@@ -400,3 +402,77 @@ body::before{
     width: fit-content;
 }
 /* End Message Section */
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        gap: 20px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-container,
+    .status-container,
+    .moisture2-container,
+    .pump2-container,
+    .weather-conditions-container,
+    .location-date-container,
+    .weather-summary-container,
+    .soil-summary-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .weather-container,
+    .rfid-container,
+    .soil-moisture-container,
+    .fire-detection-container,
+    .water-level-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .rfid-img,
+    .soil-condition-img,
+    .weather-summary-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .forecast-item {
+        min-width: 60px;
+        padding: 8px;
+    }
+
+    .forecast-item-img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .database-btn {
+        font-size: 14px;
+        height: 45px;
+    }
+
+    .soil-moisture-value,
+    .rfid-status {
+        font-size: 22px;
+    }
+
+    .condition-item span {
+        font-size: 24px;
+    }
+
+    .section-message {
+        margin-top: 15%;
+        padding: 0 10px;
+    }
+
+    .section-message img {
+        height: 120px;
+    }
+}
+/* Mobile View End */
