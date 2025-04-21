@@ -138,3 +138,161 @@ function showDisplaySection(section){
 function updateSoilInfo(){
     soilDateTxt.textContent = getCurrentDate();
 }
+
+// Broker connection Configuration
+const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
+const host = 'ws://broker.emqx.io:8083/mqtt'
+const options = {
+  keepalive: 60,
+  clientId: clientId,
+  protocolId: 'MQTT',
+  protocolVersion: 4,
+  clean: true,
+  reconnectPeriod: 1000,
+  connectTimeout: 30 * 1000,
+  will: {
+    topic: 'WillMsg',
+    payload: 'Connection Closed abnormally..!',
+    qos: 0,
+    retain: false
+  },
+}
+
+//Status connection
+console.log('Connecting mqtt client')
+const client = mqtt.connect(host, options)
+client.on('connect', () => {
+  console.log('Connected to MQTT broker!')
+  console.log(clientId)
+})
+client.on('error', (err) => {
+  console.log('Connection error: ', err)
+  client.end()
+})
+client.on('reconnect', () => {
+  console.log('Reconnecting...')
+})
+
+//Subscribe & display topic
+const topic_Soil1 = 'SmartGarden/Soil1';
+const topic_Soil2 = 'SmartGarden/Soil2';
+const topic_Api = 'SmartGarden/Api';
+const topic_Asap = 'SmartGarden/Asap';
+const topic_Water = 'SmartGarden/Water';
+const Soil1 = document.getElementById('soil1');
+const Soil2 = document.getElementById('soil2');
+const Soil1_Analog = document.getElementById('soil1-analog');
+const Soil2_Analog = document.getElementById('soil2-analog');
+const Soil1_Persen = document.getElementById('soil1-persen');
+const Soil2_Persen= document.getElementById('soil2-persen');
+const Pump1 = document.getElementById('pump1');
+const Pump2 = document.getElementById('pump2');
+const Api = document.getElementById('api');
+let Value_Api = null;
+const Asap = document.getElementById('asap');
+const Asap_Analog = document.getElementById('asap-analog');
+let Value_Asap = null;
+const Status_Udara = document.getElementById('status-udara')
+const Water = document.getElementById('water');
+const Water_Analog = document.getElementById('water-analog');
+const Water_Persen = document.getElementById('water-persen');
+const Img_Api = document.getElementById('img-api');
+const Img_Asap = document.getElementById('img-asap');
+const Img_Water = document.getElementById('img-water');
+const Img_Emote = document.getElementById('img-emote');
+
+client.subscribe([topic_Soil1, topic_Soil2, topic_Api, topic_Asap, topic_Water]);
+
+client.on('message', function (topic, message) { // message is Buffer
+    
+  if(topic === topic_Soil1){
+    console.log('Soil1 = ', message.toString());
+    Soil1_Analog.innerHTML = message.toString();
+    const calculate_persen = Math.round((1-(Number(message.toString())/4095))*100);
+    Soil1_Persen.innerHTML = calculate_persen;
+    if(Number(message.toString()) > 2000){
+        Soil1.innerHTML = "Dry";
+        Pump1.innerHTML = "On";
+    }
+    else{
+        Soil1.innerHTML = "Wet";
+        Pump1.innerHTML = "Off";
+    }
+  }
+  else if(topic === topic_Soil2){
+    console.log('Soil2 = ', message.toString());
+    Soil2_Analog.innerHTML = message.toString();
+    const calculate_persen = Math.round((1-(Number(message.toString())/4095))*100);
+    Soil2_Persen.innerHTML = calculate_persen;
+    if(Number(message.toString()) > 2000){
+        Soil2.innerHTML = "Dry";
+        Pump2,innerHTML = "On";
+    }
+    else{
+        Soil2.innerHTML = "Wet";
+        Pump1.innerHTML = "Off";
+    }
+  }
+  else if(topic === topic_Api){
+    console.log('Api = ', message.toString());
+    Value_Api = message.toString();
+    if(message.toString() === "0"){
+        Api.innerHTML = "Ada Api";
+        Img_Api.src = "assets/fire/emergency fire.svg";
+    }
+    else{
+        Api.innerHTML = "Normal"
+        Img_Api.src = "assets/fire/fire.svg";
+    }
+  }
+  else if(topic === topic_Asap){
+    console.log('Asap = ', message.toString());
+    Value_Asap = Number(message.toString());
+    Asap_Analog.innerHTML = message.toString();
+    if(Number(message.toString()) > 1800){
+        Asap.innerHTML = "Banyak Asap";
+        Img_Asap.src = "assets/air/emergency air.svg";
+    }
+    else{
+        Asap.innerHTML = "Normal";
+        Img_Asap.src = "assets/air/air.svg";
+    }
+  }
+  else if(topic === topic_Water){
+    console.log('Water = ', message.toString());
+    const calculate_ml = Math.round(Math.PI*16*(10-Number(message.toString())));     //Rumus dari cm ke ml
+    const calculate_persen = Math.round(((10-Number(message.toString()))/10)*100);   //rumus dari cm ke persen
+    Water_Analog.innerHTML = calculate_ml;
+    Water_Persen.innerHTML = calculate_persen;
+    if(calculate_persen > 80){
+        Water.innerHTML = "Full";
+        Img_Water.src = "assets/water/water-high.svg";
+    }
+    else if(calculate_persen > 30){
+        Water.innerHTML = "Medium";
+        Img_Water.src = "assets/water/water-medium.svg";
+    }
+    else{
+        Water.innerHTML = "Low";
+        Img_Water.src = "assets/water/water-low.svg";
+    }
+  }
+
+  //Status udara dari value asap dan api
+if (Value_Asap > 1800 && Value_Api === "1") {
+    Status_Udara.innerHTML = "Smoke detected, possible smoldering";
+    Img_Emote.src = "assets/emot/stressed.svg";
+  }
+  else if (Value_Asap < 1800 && Value_Api === "0") {
+    Status_Udara.innerHTML = "Heat detected, risk of fire";
+    Img_Emote.src = "assets/emot/unsmile.svg";
+  }
+  else if (Value_Asap > 1800 && Value_Api === "0") {
+    Status_Udara.innerHTML = "Active fire detected";
+    Img_Emote.src = "assets/emot/sick.svg";
+  }
+  else if (Value_Asap < 1800 && Value_Api === "1") {
+    Status_Udara.innerHTML = "Air is fresh and safe";
+    Img_Emote.src = "assets/emot/smile.svg";
+  }
+});
