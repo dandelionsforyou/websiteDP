@@ -174,11 +174,11 @@ client.on('reconnect', () => {
 })
 
 //Subscribe & display topic
-const topic_Soil1 = 'SmartGarden/Soil1';
-const topic_Soil2 = 'SmartGarden/Soil2';
-const topic_Api = 'SmartGarden/Api';
-const topic_Asap = 'SmartGarden/Asap';
-const topic_Water = 'SmartGarden/Water';
+const topic_Soil1 = 'SmartGardenBludDawg/Soil1';
+const topic_Soil2 = 'SmartGardenBludDawg/Soil2';
+const topic_Api = 'SmartGardenBludDawg/Api';
+const topic_Asap = 'SmartGardenBludDawg/Asap';
+const topic_Water = 'SmartGardenBludDawg/Water';
 const Soil1 = document.getElementById('soil1');
 const Soil2 = document.getElementById('soil2');
 const Soil1_Analog = document.getElementById('soil1-analog');
@@ -226,11 +226,11 @@ client.on('message', function (topic, message) { // message is Buffer
     Soil2_Persen.innerHTML = calculate_persen;
     if(Number(message.toString()) > 2000){
         Soil2.innerHTML = "Dry";
-        Pump2,innerHTML = "On";
+        Pump2.innerHTML = "On";
     }
     else{
         Soil2.innerHTML = "Wet";
-        Pump1.innerHTML = "Off";
+        Pump2.innerHTML = "Off";
     }
   }
   else if(topic === topic_Api){
@@ -249,7 +249,7 @@ client.on('message', function (topic, message) { // message is Buffer
     console.log('Asap = ', message.toString());
     Value_Asap = Number(message.toString());
     Asap_Analog.innerHTML = message.toString();
-    if(Number(message.toString()) > 1800){
+    if(Number(message.toString()) > 1100){
         Asap.innerHTML = "Banyak Asap";
         Img_Asap.src = "assets/air/emergency air.svg";
     }
@@ -279,19 +279,19 @@ client.on('message', function (topic, message) { // message is Buffer
   }
 
   //Status udara dari value asap dan api
-if (Value_Asap > 1800 && Value_Api === "1") {
+if (Value_Asap > 1100 && Value_Api === "1") {
     Status_Udara.innerHTML = "Smoke detected, possible smoldering";
     Img_Emote.src = "assets/emot/stressed.svg";
   }
-  else if (Value_Asap < 1800 && Value_Api === "0") {
+  else if (Value_Asap < 1100 && Value_Api === "0") {
     Status_Udara.innerHTML = "Heat detected, risk of fire";
     Img_Emote.src = "assets/emot/unsmile.svg";
   }
-  else if (Value_Asap > 1800 && Value_Api === "0") {
+  else if (Value_Asap > 1100 && Value_Api === "0") {
     Status_Udara.innerHTML = "Active fire detected";
     Img_Emote.src = "assets/emot/sick.svg";
   }
-  else if (Value_Asap < 1800 && Value_Api === "1") {
+  else if (Value_Asap < 1100 && Value_Api === "1") {
     Status_Udara.innerHTML = "Air is fresh and safe";
     Img_Emote.src = "assets/emot/smile.svg";
   }
