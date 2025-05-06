@@ -11,3 +11,7 @@ chart-test.html dibuat untuk percobaan penampilan chart/diagram garis (bukan kod
 Untuk menjalankan program:
 1. Buka file index.html
 2. Pilih Web Browser untuk menampilkan hasil.
+
+Dibuat oleh:
+> Rhaka Nurivantio,
+> Miftachudin Arif Hidayatulloh
