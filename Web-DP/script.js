@@ -38,19 +38,27 @@ databaseBtnDown.addEventListener('click', () => {
       document.body.removeChild(link);
 })
 
-fetch(urlAPIdate).then(response => response.json().then(data => {
-    if (data.latestDate) {
-          dateLogin.textContent = data.latestDate;
-        } else {
-          dateLogin.textContent = "Tidak ada data tanggal.";
-        }
-      })
-      .catch(err => {
-        console.error("Gagal mengambil data:", err);
-        dateLogin.textContent = "Error mengambil data.";
+function fetchDateLogin() {
+  fetch(urlAPIdate)
+    .then(response => response.json())
+    .then(data => {
+      if (data.latestDate) {
+        dateLogin.textContent = data.latestDate;
+      } else {
+        dateLogin.textContent = "Tidak ada data tanggal.";
+      }
     })
-)
+    .catch(err => {
+      console.error("Gagal mengambil data:", err);
+      dateLogin.textContent = "Error mengambil data.";
+    });
+}
 
+// Jalankan pertama kali saat halaman dimuat
+fetchDateLogin();
+
+// Jalankan setiap 10 detik
+setInterval(fetchDateLogin, 10000);
 searchBtn.addEventListener('click', () =>{
     if(cityInput.value.trim() != ''){
         updateWeatherInfo(cityInput.value)
