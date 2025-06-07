@@ -147,11 +147,12 @@ body::before{
 
 .forecast-item-container{
     display: flex;
+    justify-content: space-between;
     gap: 15px;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding-bottom: 12px;
 }
-.forecast-item-container::-webkit-scrollbar{
+/*.forecast-item-container::-webkit-scrollbar{
     height: 8px;
 }
 .forecast-item-container::-webkit-scrollbar-track{
@@ -161,7 +162,7 @@ body::before{
 .forecast-item-container::-webkit-scrollbar-thumb{
     background-color: rgb(0, 0 , 0, 0.15);
     border-radius: 99px;
-}
+}*/
 
 .forecast-item{
     min-width: 70px;
@@ -449,6 +450,7 @@ body::before{
         height: 80px;
     }
 
+    
     .forecast-item {
         min-width: 60px;
         padding: 8px;

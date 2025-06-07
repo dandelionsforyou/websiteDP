@@ -123,17 +123,20 @@ async function updateWeatherInfo(city){
     showDisplaySection(weatherInfoSection)
 }
 
-async function updateForecastsInfo(city){
+async function updateForecastsInfo(city) {
     const forecastData = await getFetchData('forecast', city)
 
-    const timeTaken = '12:00:00'
     const todayDate = new Date().toISOString().split('T')[0]
+    const uniqueDates = new Set()
 
     forecastItemsContainer.innerHTML = ''
-    forecastData.list.forEach(forecastWeather =>{
-        if (forecastWeather.dt_txt.includes(timeTaken) &&
-            !forecastWeather.dt_txt.includes(todayDate)){
-                updateForecastsItems(forecastWeather)
+
+    forecastData.list.forEach(forecastWeather => {
+        const dateStr = forecastWeather.dt_txt.split(' ')[0]
+
+        if (!uniqueDates.has(dateStr) && dateStr !== todayDate) {
+            uniqueDates.add(dateStr)
+            updateForecastsItems(forecastWeather)
         }
     })
 }
