@@ -22,7 +22,7 @@ const databaseBtn = document.querySelector('.database-btn')
 const databaseBtnDown = document.querySelector('.database-btn-download')
 
 const dateLogin = document.querySelector('.database-date-txt')
-const urlAPIdate = "https://script.google.com/macros/s/AKfycbyVfaOLHN4CHRe1uFRgb83vVttMQqeH0ORnsK6SvLYK079qt3pNZjw-HXm42icOg3ko/exec"
+const urlAPIdate = "https://script.google.com/macros/s/AKfycbwrHvZYr_9OMCpjGM47qOHhavat9tKwJ2o1LgBCSV8bwsfBNTH8FmbsPyFVvAc7SNscQQ/exec"
 
 databaseBtn.addEventListener('click', () => {
     window.open("https://docs.google.com/spreadsheets/d/100XgyOWuTMzw8SHUVTaCR9fzj_BjFGn6TlHRTcG7Q_E/edit?hl=id&gid=0#gid=0", "_blank")
