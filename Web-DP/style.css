@@ -207,23 +207,26 @@ body::before{
     align-items: center;
 }
 
-.rfid-img {
-    width: 120px;
-    height: 120px;
-}
-
 .rfid-info{
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 .rfid-condition-info {
-    text-align: end;
+    text-align: left;
 }
-.rfid-details-container {
+.info-row {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
+}
+.blurred-text {
+    filter: blur(15px);
+    transition: 0.5s;
+    cursor: pointer;
+}
+.blurred-text:hover {
+    filter: blur(0px);
 }
 
 .rfid-status {
