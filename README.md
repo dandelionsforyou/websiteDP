@@ -1,17 +1,13 @@
 # websiteDP
 
-Weather done.
+Website yang dibuat untuk monitoring, kendali aktuator dan penyetoran database online dengan menggunakan Google Spreadsheet pada sistem Smart Garden.
 
-Page untuk initialize koneksi ke soil moisture dan water pump belum ter-integrasi.
-
-Page untuk initialize koneksi ke RFID belum ter-integrasi.
-
-chart-test.html dibuat untuk percobaan penampilan chart/diagram garis (bukan kode utama).
-
-Untuk menjalankan program:
-1. Buka file index.html
-2. Pilih Web Browser untuk menampilkan hasil.
+Website dibuat untuk memenuhi tugas akhir Design Project.
 
 Dibuat oleh:
 > Rhaka Nurivantio,
 > Miftachudin Arif Hidayatulloh
+
+Untuk menjalankan program:
+1. Buka file index.html
+2. Pilih Web Browser untuk menampilkan hasil.
