@@ -185,7 +185,7 @@ body::before{
 /* End Weather Info */
 
 /* RFID Info */
-.rfid-container, .soil-moisture-container{
+.rfid-container{
     width: 300px;
     height: 496px;
     z-index: 1;
@@ -266,8 +266,8 @@ body::before{
 /* Soil Moisture Info */
 
 .soil-moisture-container{
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 400px;
     z-index: 1;
     background: linear-gradient(
         to top, rgb(0, 0, 0, 0.15),
@@ -278,13 +278,12 @@ body::before{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .soil-moisture-info {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 40px;
 }
 
 .soil-date-container {
@@ -316,6 +315,36 @@ body::before{
     font-size: 28px;
     font-weight: 700;
 }
+
+.pump-btn {
+    position: absolute;
+    bottom: 30px;
+    transform: translateX(-50%);
+    left: 50%;
+    width: calc(100% - 20px);
+    height: 50px; /* Adjust height as needed */
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.pump-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.pump-on-btn {
+    background-color: #C0392B;
+}
+.pump-on-btn:hover {
+    background-color: #A93226;
+  }
 /* End Soil Moisture Info */
 
 /* Water Pump Info*/
@@ -338,7 +367,7 @@ body::before{
 
 /* Fire Detection Info */
 .fire-detection-container{
-    width: 400px;
+    width: 350px;
     height: 400px;
     z-index: 1;
     background: linear-gradient(
@@ -350,13 +379,11 @@ body::before{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    
 }
 .fire-detection-info{
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
 .emote-img{
     width: 24px;
@@ -377,7 +404,7 @@ body::before{
 
 /* Water Level Info */
 .water-level-container{
-    width: 300px;
+    width: 350px;
     height: 400px;
     z-index: 1;
     background: linear-gradient(
@@ -389,10 +416,14 @@ body::before{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 .water-analog-value{
     display: flex;
+}
+.pump-condition-img {
+    width: 40px;
+    height: 40px;
+    border: none;
 }
 /* End of Water Level Info */
 

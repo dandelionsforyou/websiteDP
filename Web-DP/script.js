@@ -229,8 +229,8 @@ const Soil1_Analog = document.getElementById('soil1-analog');
 const Soil2_Analog = document.getElementById('soil2-analog');
 const Soil1_Persen = document.getElementById('soil1-persen');
 const Soil2_Persen= document.getElementById('soil2-persen');
-const Pump1 = document.getElementById('pump1');
-const Pump2 = document.getElementById('pump2');
+const BtnPump1 = document.getElementById('btn-pump1');
+const BtnPump2 = document.getElementById('btn-pump2');
 const Api = document.getElementById('api');
 let Value_Api = null;
 const Asap = document.getElementById('asap');
@@ -240,6 +240,8 @@ const Status_Udara = document.getElementById('status-udara')
 const Water = document.getElementById('water');
 const Water_Analog = document.getElementById('water-analog');
 const Water_Persen = document.getElementById('water-persen');
+const Pump1_Status = document.getElementById('pump1-status');
+const Pump2_Status = document.getElementById('pump2-status');
 const Img_Api = document.getElementById('img-api');
 const Img_Asap = document.getElementById('img-asap');
 const Img_Water = document.getElementById('img-water');
@@ -256,11 +258,15 @@ client.on('message', function (topic, message) { // message is Buffer
     Soil1_Persen.innerHTML = calculate_persen;
     if(Number(message.toString()) > 2000){
         Soil1.innerHTML = "Dry";
-        Pump1.innerHTML = "On";
+        BtnPump1.innerHTML = "Turn Off Pump";
+        BtnPump1.classList.add("pump-on-btn");
+        Pump1_Status.innerHTML = "On-Auto";
     }
     else{
         Soil1.innerHTML = "Wet";
-        Pump1.innerHTML = "Off";
+        BtnPump1.innerHTML = "Turn On Pump";
+        BtnPump1.classList.remove("pump-on-btn");
+        Pump1_Status.innerHTML = "Off-Auto";
     }
   }
   else if(topic === topic_Soil2){
@@ -270,11 +276,15 @@ client.on('message', function (topic, message) { // message is Buffer
     Soil2_Persen.innerHTML = calculate_persen;
     if(Number(message.toString()) > 2000){
         Soil2.innerHTML = "Dry";
-        Pump2.innerHTML = "On";
+        BtnPump2.innerHTML = "Turn Off Pump";
+        BtnPump2.classList.add("pump-on-btn");
+        Pump2_Status.innerHTML = "On-Auto";
     }
     else{
         Soil2.innerHTML = "Wet";
-        Pump2.innerHTML = "Off";
+        BtnPump2.innerHTML = "Turn On Pump";
+        BtnPump2.classList.remove("pump-on-btn");
+        Pump2_Status.innerHTML = "Off-Auto";
     }
   }
   else if(topic === topic_Api){
