@@ -1,0 +1,31 @@
+<main class="pump2-container">
+                <!-- New Section for Water Pump -->
+                <main class="pump-container">
+                    <section class="soil-moisture-info">
+                        <div class="soil-condition-container">
+                            <div class="condition-item">
+                                
+                                <h3 class="condition-text regular-txt">Water Pump 1 Status</h3>
+                            </div>
+                            <div class="soil-condition-info">
+                                <h1 class="moisture-value" id="pump1">On</h1>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- New Section for Water Pump -->
+                <main class="pump-container">
+                    <section class="soil-moisture-info">
+                        <div class="soil-condition-container">
+                            <div class="condition-item">
+                                
+                                <h3 class="condition-text regular-txt">Water Pump 2 Status</h3>
+                            </div>
+                            <div class="soil-condition-info">
+                                <h1 class="moisture-value" id="pump2">Off</h1>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </main>
