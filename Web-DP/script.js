@@ -18,6 +18,47 @@ const soilDateTxt = document.querySelector('.soil-date-txt');
 
 const forecastItemsContainer = document.querySelector('.forecast-item-container')
 
+const databaseBtn = document.querySelector('.database-btn')
+const databaseBtnDown = document.querySelector('.database-btn-download')
+
+const dateLogin = document.querySelector('.database-date-txt')
+const urlAPIdate = "https://script.google.com/macros/s/AKfycbwrHvZYr_9OMCpjGM47qOHhavat9tKwJ2o1LgBCSV8bwsfBNTH8FmbsPyFVvAc7SNscQQ/exec"
+
+databaseBtn.addEventListener('click', () => {
+    window.open("https://docs.google.com/spreadsheets/d/100XgyOWuTMzw8SHUVTaCR9fzj_BjFGn6TlHRTcG7Q_E/edit?hl=id&gid=0#gid=0", "_blank")
+})
+
+databaseBtnDown.addEventListener('click', () => {
+    const url = "https://docs.google.com/spreadsheets/d/100XgyOWuTMzw8SHUVTaCR9fzj_BjFGn6TlHRTcG7Q_E/export?format=xlsx"
+    const link = document.createElement("a");
+      link.href = url;
+      link.download = "database.xlsx"; // Nama file saat diunduh
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+})
+
+function fetchDateLogin() {
+  fetch(urlAPIdate)
+    .then(response => response.json())
+    .then(data => {
+      if (data.latestDate) {
+        dateLogin.textContent = data.latestDate;
+      } else {
+        dateLogin.textContent = "Tidak ada data tanggal.";
+      }
+    })
+    .catch(err => {
+      console.error("Gagal mengambil data:", err);
+      dateLogin.textContent = "Error mengambil data.";
+    });
+}
+
+// Jalankan pertama kali saat halaman dimuat
+fetchDateLogin();
+
+// Jalankan setiap 10 detik
+setInterval(fetchDateLogin, 10000);
 searchBtn.addEventListener('click', () =>{
     if(cityInput.value.trim() != ''){
         updateWeatherInfo(cityInput.value)
@@ -90,17 +131,20 @@ async function updateWeatherInfo(city){
     showDisplaySection(weatherInfoSection)
 }
 
-async function updateForecastsInfo(city){
+async function updateForecastsInfo(city) {
     const forecastData = await getFetchData('forecast', city)
 
-    const timeTaken = '12:00:00'
     const todayDate = new Date().toISOString().split('T')[0]
+    const uniqueDates = new Set()
 
     forecastItemsContainer.innerHTML = ''
-    forecastData.list.forEach(forecastWeather =>{
-        if (forecastWeather.dt_txt.includes(timeTaken) &&
-            !forecastWeather.dt_txt.includes(todayDate)){
-                updateForecastsItems(forecastWeather)
+
+    forecastData.list.forEach(forecastWeather => {
+        const dateStr = forecastWeather.dt_txt.split(' ')[0]
+
+        if (!uniqueDates.has(dateStr) && dateStr !== todayDate) {
+            uniqueDates.add(dateStr)
+            updateForecastsItems(forecastWeather)
         }
     })
 }
