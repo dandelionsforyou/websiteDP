@@ -182,6 +182,36 @@ body::before{
     width: 35px;
     height: 35px;
 }
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+}
+.slider{ /* track */
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background-color: white;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.slider::before{  /* slider */
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 30px;
+    background-color: #163020;
+    border-radius: 9px;
+    transition: transform 0.3s;
+}
+.toggle-switch input:checked+.slider{
+    background-color: #729762;
+}
+.toggle-switch input:checked+.slider::before{
+    transform: translateX(30px);
+}
 /* End Weather Info */
 
 /* RFID Info */
