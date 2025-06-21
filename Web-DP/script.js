@@ -223,8 +223,14 @@ const topic_Soil2 = 'SmartGardenBludDawg/Soil2';
 const topic_Api = 'SmartGardenBludDawg/Api';
 const topic_Asap = 'SmartGardenBludDawg/Asap';
 const topic_Water = 'SmartGardenBludDawg/Water';
+const topic_Pump1 = 'SmartGardenBludDawg/Pump1';
+const topic_Pump2 = 'SmartGardenBludDawg/Pump2';
+const topic_SliderPump1 = 'SmartGardenBludDawg/SliderPump1';
+const topic_SliderPump2 = 'SmartGardenBludDawg/SliderPump2';
 const Soil1 = document.getElementById('soil1');
 const Soil2 = document.getElementById('soil2');
+const Soil1Auto = document.getElementById('soil1-auto'); 
+const Soil2Auto = document.getElementById('soil2-auto'); 
 const Soil1_Analog = document.getElementById('soil1-analog');
 const Soil2_Analog = document.getElementById('soil2-analog');
 const Soil1_Persen = document.getElementById('soil1-persen');
@@ -247,6 +253,135 @@ const Img_Asap = document.getElementById('img-asap');
 const Img_Water = document.getElementById('img-water');
 const Img_Emote = document.getElementById('img-emote');
 
+//Slider Button Pump 1
+let Soil1Status = "Manual";
+Soil1Auto.addEventListener("change", function() {
+  if(this.checked == true){
+    Soil1Status = "Auto";
+    client.publish(topic_SliderPump1, "Auto", options, function(err) {
+      if (err) {
+        console.error('Slider Pump 1 Auto error');
+      } else {
+        console.log('Slider Pump 1 Auto published');
+      }
+    });
+  }
+  else{
+    Soil1Status = "Manual";
+    BtnPump1Status = "OFF";
+    client.publish(topic_SliderPump1, "Manual", options, function(err) {
+      if (err) {
+        console.error('Slider Pump 1 Manual error');
+      } else {
+        console.log('Slider Pump 1 Manual published');
+      }
+    });
+    BtnPump1.innerHTML = "Turn On Pump";
+    BtnPump1.classList.remove("pump-on-btn");
+    Pump1_Status.innerHTML = "Off-Manual";
+  }
+});
+
+//Slider Button Pump 2
+let Soil2Status = "Manual";
+Soil2Auto.addEventListener("change", function() {
+  if(this.checked == true){
+    Soil2Status = "Auto";
+    client.publish(topic_SliderPump2, "Auto", options, function(err) {
+      if (err) {
+        console.error('Slider Pump 2 Auto error');
+      } else {
+        console.log('Slider Pump 2 Auto published');
+      }
+    });
+  }
+  else{
+    Soil2Status = "Manual";
+    client.publish(topic_SliderPump2, "Manual", options, function(err) {
+      if (err) {
+        console.error('Slider Pump 2 Manual error');
+      } else {
+        console.log('Slider Pump 2 Manual published');
+      }
+    });
+    BtnPump2.innerHTML = "Turn On Pump";
+    BtnPump2.classList.remove("pump-on-btn");
+    Pump2_Status.innerHTML = "Off-Manual";
+  }
+});
+
+//Button Pump 1 Manual
+let BtnPump1Status = "OFF";
+BtnPump1.addEventListener("click", function (){
+  if(Soil1Status == "Manual"){
+    if(BtnPump1Status == "OFF"){
+      client.publish(topic_Pump1, 'ON', options, function(err) {
+        if (err) {
+          console.error('Pump 1 ON error');
+        } else {
+          console.log('Pump 1 ON published');
+        }
+      });
+      BtnPump1.innerHTML = "Turn Off Pump";
+      BtnPump1.classList.add("pump-on-btn");
+      Pump1_Status.innerHTML = "On-Manual";
+      BtnPump1Status = "ON";
+    }
+    else{
+      client.publish(topic_Pump1, 'OFF', options, function(err) {
+        if (err) {
+          console.error('Pump 1 OFF error');
+        } else {
+          console.log('Pump 1 OFF published');
+        }
+      });
+      BtnPump1.innerHTML = "Turn On Pump";
+      BtnPump1.classList.remove("pump-on-btn");
+      Pump1_Status.innerHTML = "Off-Manual";
+      BtnPump1Status = "OFF";
+    }
+  }
+  else{ 
+    alert("Button cannot be pressed because Soil 1 is in automatic mode")
+  }
+});
+
+//Button Pump 2 Manual
+let BtnPump2Status = "OFF";
+BtnPump2.addEventListener("click", function (){
+  if(Soil2Status == "Manual"){
+    if(BtnPump2Status == "OFF"){
+      client.publish(topic_Pump2, 'ON', options, function(err) {
+        if (err) {
+          console.error('Pump 2 ON error');
+        } else {
+          console.log('Pump 2 ON published');
+        }
+      });
+      BtnPump2.innerHTML = "Turn Off Pump";
+      BtnPump2.classList.add("pump-on-btn");
+      Pump2_Status.innerHTML = "On-Manual";
+      BtnPump2Status = "ON";
+    }
+    else{
+      client.publish(topic_Pump2, 'OFF', options, function(err) {
+        if (err) {
+          console.error('Pump 2 OFF error');
+        } else {
+          console.log('Pump 2 OFF published');
+        }
+      });
+      BtnPump2.innerHTML = "Turn On Pump";
+        BtnPump2.classList.remove("pump-on-btn");
+        Pump2_Status.innerHTML = "Off-Manual";
+      BtnPump2Status = "OFF";
+    }
+  }
+  else{ 
+    alert("Button cannot be pressed because Soil 1 is in automatic mode")
+  }
+});
+
 client.subscribe([topic_Soil1, topic_Soil2, topic_Api, topic_Asap, topic_Water]);
 
 client.on('message', function (topic, message) { // message is Buffer
@@ -256,17 +391,19 @@ client.on('message', function (topic, message) { // message is Buffer
     Soil1_Analog.innerHTML = message.toString();
     const calculate_persen = Math.round((1-(Number(message.toString())/4095))*100);
     Soil1_Persen.innerHTML = calculate_persen;
-    if(Number(message.toString()) > 2000){
+    if(Number(message.toString()) > 2500 && Soil1Status == "Auto"){
         Soil1.innerHTML = "Dry";
         BtnPump1.innerHTML = "Turn Off Pump";
         BtnPump1.classList.add("pump-on-btn");
         Pump1_Status.innerHTML = "On-Auto";
+        BtnPump1Status = "ON";
     }
-    else{
+    else if(Number(message.toString()) <=2500 && Soil1Status == "Auto"){
         Soil1.innerHTML = "Wet";
         BtnPump1.innerHTML = "Turn On Pump";
         BtnPump1.classList.remove("pump-on-btn");
         Pump1_Status.innerHTML = "Off-Auto";
+        BtnPump1Status = "OFF";
     }
   }
   else if(topic === topic_Soil2){
@@ -274,23 +411,25 @@ client.on('message', function (topic, message) { // message is Buffer
     Soil2_Analog.innerHTML = message.toString();
     const calculate_persen = Math.round((1-(Number(message.toString())/4095))*100);
     Soil2_Persen.innerHTML = calculate_persen;
-    if(Number(message.toString()) > 2000){
-        Soil2.innerHTML = "Dry";
-        BtnPump2.innerHTML = "Turn Off Pump";
-        BtnPump2.classList.add("pump-on-btn");
-        Pump2_Status.innerHTML = "On-Auto";
-    }
-    else{
-        Soil2.innerHTML = "Wet";
-        BtnPump2.innerHTML = "Turn On Pump";
-        BtnPump2.classList.remove("pump-on-btn");
-        Pump2_Status.innerHTML = "Off-Auto";
-    }
+    if(Number(message.toString()) > 2000 && Soil2Status == "Auto"){
+      Soil2.innerHTML = "Dry";
+      BtnPump2.innerHTML = "Turn Off Pump";
+      BtnPump2.classList.add("pump-on-btn");
+      Pump2_Status.innerHTML = "On-Auto";
+      BtnPump2Status = "ON";
+  }
+  else if(Number(message.toString()) <= 2000 && Soil2Status == "Auto"){
+      Soil2.innerHTML = "Wet";
+      BtnPump2.innerHTML = "Turn On Pump";
+      BtnPump2.classList.remove("pump-on-btn");
+      Pump2_Status.innerHTML = "Off-Auto";
+      BtnPump2Status = "OFF";
+  }
   }
   else if(topic === topic_Api){
     console.log('Api = ', message.toString());
     Value_Api = message.toString();
-    if(message.toString() === "0"){
+    if(message.toString() === "1"){
         Api.innerHTML = "Ada Api";
         Img_Api.src = "assets/fire/emergency fire.svg";
     }
@@ -303,7 +442,7 @@ client.on('message', function (topic, message) { // message is Buffer
     console.log('Asap = ', message.toString());
     Value_Asap = Number(message.toString());
     Asap_Analog.innerHTML = message.toString();
-    if(Number(message.toString()) > 1100){
+    if(Number(message.toString()) > 1200){
         Asap.innerHTML = "Banyak Asap";
         Img_Asap.src = "assets/air/emergency air.svg";
     }
@@ -314,8 +453,8 @@ client.on('message', function (topic, message) { // message is Buffer
   }
   else if(topic === topic_Water){
     console.log('Water = ', message.toString());
-    const calculate_ml = Math.round(Math.PI*16*(10-Number(message.toString())));     //Rumus dari cm ke ml
-    const calculate_persen = Math.round(((10-Number(message.toString()))/10)*100);   //rumus dari cm ke persen
+    const calculate_ml = Math.round(Math.PI*16*(12-Number(message.toString())));     //Rumus dari cm ke ml
+    const calculate_persen = Math.round(((12-Number(message.toString()))/12)*100);   //rumus dari cm ke persen
     Water_Analog.innerHTML = calculate_ml;
     Water_Persen.innerHTML = calculate_persen;
     if(calculate_persen > 80){
@@ -333,19 +472,19 @@ client.on('message', function (topic, message) { // message is Buffer
   }
 
   //Status udara dari value asap dan api
-if (Value_Asap > 1100 && Value_Api === "1") {
+if (Value_Asap > 1200 && Value_Api === "0") {
     Status_Udara.innerHTML = "Smoke detected, possible smoldering";
     Img_Emote.src = "assets/emot/stressed.svg";
   }
-  else if (Value_Asap < 1100 && Value_Api === "0") {
+  else if (Value_Asap <= 1200 && Value_Api === "1") {
     Status_Udara.innerHTML = "Heat detected, risk of fire";
     Img_Emote.src = "assets/emot/unsmile.svg";
   }
-  else if (Value_Asap > 1100 && Value_Api === "0") {
+  else if (Value_Asap > 1200 && Value_Api === "1") {
     Status_Udara.innerHTML = "Active fire detected";
     Img_Emote.src = "assets/emot/sick.svg";
   }
-  else if (Value_Asap < 1100 && Value_Api === "1") {
+  else if (Value_Asap <= 1200 && Value_Api === "0") {
     Status_Udara.innerHTML = "Air is fresh and safe";
     Img_Emote.src = "assets/emot/smile.svg";
   }
