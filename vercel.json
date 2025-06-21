@@ -1,11 +1,3 @@
 {
-    "projects": {
-      "name": "web-dp"
-    },
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/Web-DP/$1"
-      }
-    ]
+    "root": "Web-DP"
   }
