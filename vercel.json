@@ -1,3 +1,8 @@
 {
-    "root": "Web-DP"
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/Web-DP/$1"
+      }
+    ]
   }
