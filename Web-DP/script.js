@@ -185,7 +185,7 @@ function updateSoilInfo(){
 
 // Broker connection Configuration
 const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
-const host = 'ws://broker.emqx.io:8083/mqtt'
+const host = 'wss://broker.emqx.io:8083/mqtt'
 const options = {
   keepalive: 60,
   clientId: clientId,
@@ -429,7 +429,7 @@ client.on('message', function (topic, message) { // message is Buffer
   else if(topic === topic_Api){
     console.log('Api = ', message.toString());
     Value_Api = message.toString();
-    if(message.toString() === "1"){
+    if(message.toString() === "0"){
         Api.innerHTML = "Ada Api";
         Img_Api.src = "assets/fire/emergency fire.svg";
     }
@@ -472,19 +472,19 @@ client.on('message', function (topic, message) { // message is Buffer
   }
 
   //Status udara dari value asap dan api
-if (Value_Asap > 1200 && Value_Api === "0") {
+if (Value_Asap > 1200 && Value_Api === "1") {
     Status_Udara.innerHTML = "Smoke detected, possible smoldering";
     Img_Emote.src = "assets/emot/stressed.svg";
   }
-  else if (Value_Asap <= 1200 && Value_Api === "1") {
+  else if (Value_Asap <= 1200 && Value_Api === "0") {
     Status_Udara.innerHTML = "Heat detected, risk of fire";
     Img_Emote.src = "assets/emot/unsmile.svg";
   }
-  else if (Value_Asap > 1200 && Value_Api === "1") {
+  else if (Value_Asap > 1200 && Value_Api === "0") {
     Status_Udara.innerHTML = "Active fire detected";
     Img_Emote.src = "assets/emot/sick.svg";
   }
-  else if (Value_Asap <= 1200 && Value_Api === "0") {
+  else if (Value_Asap <= 1200 && Value_Api === "1") {
     Status_Udara.innerHTML = "Air is fresh and safe";
     Img_Emote.src = "assets/emot/smile.svg";
   }
