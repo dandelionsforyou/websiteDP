@@ -15,6 +15,9 @@ const windValueTxt = document.querySelector('.wind-value-txt')
 const weatherSummaryImg = document.querySelector('.weather-summary-img')
 const currentDateTxt = document.querySelector('.current-date-txt')
 const soilDateTxt = document.querySelector('.soil-date-txt');
+const soilDateTxt2 = document.querySelector('.soil2-date-txt');
+const waterDateTxt = document.querySelector('.water-date-txt');
+const fireDateTxt = document.querySelector('.fire-date-txt');
 
 const forecastItemsContainer = document.querySelector('.forecast-item-container')
 
@@ -57,8 +60,8 @@ function fetchDateLogin() {
 // Jalankan pertama kali saat halaman dimuat
 fetchDateLogin();
 
-// Jalankan setiap 10 detik
-setInterval(fetchDateLogin, 10000);
+// Jalankan setiap 5 detik
+setInterval(fetchDateLogin, 5000);
 searchBtn.addEventListener('click', () =>{
     if(cityInput.value.trim() != ''){
         updateWeatherInfo(cityInput.value)
@@ -81,7 +84,7 @@ async function getFetchData(endPoint, city){
     return response.json()
 }
 
-updateSoilInfo();
+updateDateInfo();
 
 function getWeatherIcon(id){
     if(id <= 232) return 'thunderstorm.svg'
@@ -179,8 +182,12 @@ function showDisplaySection(section){
     section.style.display = 'flex'
 }
 
-function updateSoilInfo(){
+function updateDateInfo(){
     soilDateTxt.textContent = getCurrentDate();
+    soilDateTxt2.textContent = getCurrentDate();
+    currentDateTxt.textContent = getCurrentDate();
+    waterDateTxt.textContent = getCurrentDate();
+    fireDateTxt.textContent = getCurrentDate(); 
 }
 
 // Broker connection Configuration
