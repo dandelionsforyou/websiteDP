@@ -453,8 +453,8 @@ client.on('message', function (topic, message) { // message is Buffer
   }
   else if(topic === topic_Water){
     console.log('Water = ', message.toString());
-    const calculate_ml = Math.round(Math.PI*16*(12-Number(message.toString())));     //Rumus dari cm ke ml
-    const calculate_persen = Math.round(((12-Number(message.toString()))/12)*100);   //rumus dari cm ke persen
+    const calculate_ml = Math.round(Math.PI*16*(11-Number(message.toString())));     //Rumus dari cm ke ml
+    const calculate_persen = Math.round(((11-Number(message.toString()))/11)*100);   //rumus dari cm ke persen
     Water_Analog.innerHTML = calculate_ml;
     Water_Persen.innerHTML = calculate_persen;
     if(calculate_persen > 80){
