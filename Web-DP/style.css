@@ -182,7 +182,11 @@ body::before{
     width: 35px;
     height: 35px;
 }
+
+
 .toggle-switch input {
+    position: relative;
+    display: inline-block;
     opacity: 0;
     width: 0;
     height: 0;
@@ -202,6 +206,7 @@ body::before{
     position: absolute;
     height: 20px;
     width: 30px;
+    left: 0; 
     background-color: #163020;
     border-radius: 9px;
     transition: transform 0.3s;
@@ -347,7 +352,7 @@ body::before{
 }
 
 .pump-btn {
-    position: absolute;
+    position: relative;
     bottom: 30px;
     transform: translateX(-50%);
     left: 50%;
@@ -497,7 +502,6 @@ body::before{
 
     .weather-container,
     .rfid-container,
-    .soil-moisture-container,
     .fire-detection-container,
     .water-level-container {
         width: 100%;
@@ -510,8 +514,29 @@ body::before{
         width: 80px;
         height: 80px;
     }
-
     
+    .toggle-switch input {
+        position: relative;
+        display: inline-block;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin-left: -60px;
+    }
+
+    .moisture2-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .soil-moisture-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        height: auto;
+        gap: 20px
+    }
+
     .forecast-item {
         min-width: 60px;
         padding: 8px;
